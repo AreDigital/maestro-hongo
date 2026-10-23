@@ -1,0 +1,768 @@
+/* ============================================
+   MAESTRO HONGO — Design tokens
+   ============================================ */
+:root {
+  --bg: #FAF9F5;
+  --ink: #1C1B18;
+  --ink-soft: #565349;
+  --moss: #4B5D45;
+  --clay: #A9673A;
+  --line: #E4E1D6;
+  --surface: #F2F0E7;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --max-width: 1120px;
+}
+
+[data-theme="dark"] {
+  --bg: #14151F;
+  --ink: #EDEAE0;
+  --ink-soft: #A6A399;
+  --moss: #8FA687;
+  --clay: #C98B5D;
+  --line: #2A2B34;
+  --surface: #1B1C28;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============================================
+   Canvas de partículas (micelio)
+   ============================================ */
+#mycelium {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.site-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 28px 24px;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+}
+
+.main-nav {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover { color: var(--moss); }
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pill-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.pill-btn:hover { border-color: var(--moss); color: var(--moss); }
+
+.theme-icon { font-size: 0.6rem; }
+
+.login-link {
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+}
+
+/* ============================================
+   Hero
+   ============================================ */
+.hero {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 96px 24px 120px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 14ch;
+  margin-bottom: 28px;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin-bottom: 44px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-primary:hover { background: var(--moss); }
+
+.btn-secondary {
+  border-color: var(--line);
+  color: var(--ink);
+}
+.btn-secondary:hover { border-color: var(--clay); color: var(--clay); }
+
+/* ============================================
+   Tres dimensiones — bloques horizontales
+   ============================================ */
+.dimensions-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin: 36px 0;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 700px) {
+  .dimensions-row { grid-template-columns: 1fr; gap: 28px; }
+}
+
+.icon-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.icon-fact h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.icon-fact p {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 0;
+}
+
+/* ============================================
+   Íconos de línea (badges circulares)
+   ============================================ */
+.icon-badge {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-badge svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--moss);
+  fill: none;
+  stroke-width: 1.4;
+}
+
+/* ============================================
+   Lista de manifiesto (declaraciones)
+   ============================================ */
+.manifesto-list {
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.manifesto-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.manifesto-item p {
+  margin-bottom: 0;
+  padding-top: 6px;
+}
+
+/* ============================================
+   Tarjetas de principios con ícono
+   ============================================ */
+.principle-icon-card .icon-badge {
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   Paneles destacados (Misión / Visión)
+   ============================================ */
+.highlight-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 48px;
+}
+
+@media (max-width: 700px) {
+  .highlight-panel { padding: 32px 24px; }
+}
+
+.highlight-panel .pull-quote {
+  border-left-color: var(--clay);
+}
+
+.highlight-panel:nth-of-type(even) {
+  background: var(--bg);
+}
+
+/* ============================================
+   Banner de cierre
+   ============================================ */
+.closing-banner {
+  position: relative;
+  z-index: 5;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 48px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.closing-banner .eyebrow { color: var(--moss); }
+
+.closing-banner h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.5rem;
+  max-width: 34ch;
+}
+
+.closing-banner .btn-primary {
+  background: var(--bg);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.closing-banner .btn-primary:hover {
+  background: var(--moss);
+  color: var(--bg);
+}
+
+/* ============================================
+   Tres caminos
+   ============================================ */
+.paths {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px 120px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.path-card {
+  padding: 40px 32px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.3s ease;
+}
+
+.path-card:last-child { border-right: none; }
+
+.path-card:hover { background: var(--surface); }
+
+.path-index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--clay);
+  display: block;
+  margin-bottom: 18px;
+}
+
+.path-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.path-card p {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ============================================
+   Secciones placeholder (se completan luego)
+   ============================================ */
+.section-placeholder {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px 24px;
+  border-top: 1px solid var(--line);
+}
+
+.section-placeholder h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   Nav activo (página actual)
+   ============================================ */
+.main-nav a.active {
+  color: var(--ink);
+  border-bottom: 1px solid var(--clay);
+  padding-bottom: 3px;
+}
+
+/* ============================================
+   Panel de intro (icono + texto + callout)
+   ============================================ */
+.intro-panel {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 56px 24px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 800px) {
+  .intro-panel { flex-direction: column; }
+}
+
+.intro-mark {
+  width: 96px;
+  height: 96px;
+  min-width: 96px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-mark svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--moss);
+  fill: none;
+  stroke-width: 1.3;
+}
+
+.intro-panel h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 14px;
+}
+
+.intro-panel .lead {
+  font-size: 1.02rem;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: 24px;
+}
+
+.info-callout {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 20px 24px;
+  max-width: 60ch;
+}
+
+.info-callout .icon-badge {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+}
+
+.info-callout .icon-badge svg { width: 15px; height: 15px; }
+
+.info-callout p {
+  font-size: 0.92rem;
+  margin-bottom: 4px;
+}
+
+.info-callout p:last-child { margin-bottom: 0; }
+
+/* ============================================
+   Encabezado con divisores ("Explora nuestras áreas")
+   ============================================ */
+.divider-heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 24px 0;
+}
+
+.divider-heading::before,
+.divider-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.divider-heading span {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* ============================================
+   Tarjetas de áreas
+   ============================================ */
+.areas-grid {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.area-card {
+  border: 1px solid var(--line);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.area-card .icon-badge {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 18px;
+}
+
+.area-card .icon-badge svg { width: 24px; height: 24px; }
+
+.area-card h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.area-card p {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.area-card .btn-ghost {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  padding: 10px 16px;
+  text-align: center;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.area-card .btn-ghost:hover {
+  border-color: var(--moss);
+  color: var(--moss);
+}
+
+/* ============================================
+   Aviso final (disclaimer)
+   ============================================ */
+.disclaimer-box {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  margin: 0 auto 56px;
+  padding: 24px 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.disclaimer-box .icon-badge {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+}
+
+.disclaimer-box .icon-badge svg { width: 15px; height: 15px; }
+
+.disclaimer-box p {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+
+.disclaimer-box p:last-child { margin-bottom: 0; }
+
+/* ============================================
+   Encabezado de página interna
+   ============================================ */
+.page-hero {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 72px 24px 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.08;
+  max-width: 18ch;
+  margin-bottom: 20px;
+}
+
+.page-hero .page-sub {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+/* ============================================
+   Sumario de secciones (tabla de contenidos)
+   ============================================ */
+.toc {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 28px 24px;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.toc a {
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+}
+
+.toc a:hover {
+  color: var(--moss);
+  border-bottom-color: var(--moss);
+}
+
+/* ============================================
+   Bloques de contenido de secciones internas
+   ============================================ */
+.content-section {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 64px 24px;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 24px;
+}
+
+.content-section .eyebrow { margin-bottom: 16px; }
+
+.content-section h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.content-section p {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+  margin-bottom: 16px;
+}
+
+.content-section p:last-child { margin-bottom: 0; }
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 24px;
+}
+
+@media (max-width: 700px) {
+  .content-grid { grid-template-columns: 1fr; }
+}
+
+.content-grid-item {
+  border: 1px solid var(--line);
+  padding: 24px;
+}
+
+.content-grid-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.content-grid-item p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--clay);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.pull-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: var(--ink);
+  max-width: 52ch;
+  padding-left: 24px;
+  border-left: 2px solid var(--moss);
+  margin: 28px 0;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.site-footer {
+  position: relative;
+  z-index: 5;
+  border-top: 1px solid var(--line);
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 860px) {
+  .main-nav { display: none; }
+  .paths { grid-template-columns: 1fr; }
+  .path-card { border-right: none; }
+}
+
+/* Respeta preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
